@@ -10,11 +10,11 @@ Honest ultra race reports. Written from a female perspective, without the market
 
 | Race | Distance | Date |
 |------|----------|------|
-| Ultra London UK | 50k | May 2025 |
+| Lea Valley | 50k | Spring 2025 |
+| Ultra London | 50k | May 2025 |
 | Epping Forest Ultra | 50k | October 2025 |
 | Country to Capital | 70k | January 2026 |
 | Beyond Trails UK | 55k | June 2026 |
-
 
 ---
 
