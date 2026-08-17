@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr Virginia Silió — CSci MRSB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F6F3EE; --surface: #EDEAE0; --text: #1C1C28; --muted: #6A6450;
+      --accent: #4A7856; --accent-pale: #C8D9CA; --rule: #D4D0C4; --max-w: 760px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Source Sans 3', sans-serif; font-size: 17px; line-height: 1.7; }
+    nav { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--rule); padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+    .nav-name { font-family: 'Lora', serif; font-size: 0.95rem; font-weight: 600; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    main { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+    section { padding: 3.5rem 0; border-bottom: 1px solid var(--rule); }
+    section:last-child { border-bottom: none; }
+    .hero { padding: 4.5rem 0 3rem; }
+    .credentials { display: inline-flex; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .badge { background: var(--accent-pale); color: var(--accent); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.07em; padding: 0.2rem 0.65rem; border-radius: 2px; text-transform: uppercase; }
+    h1 { font-family: 'Lora', serif; font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 0.3rem; }
+    .title-line { color: var(--muted); font-size: 1rem; margin-bottom: 2.25rem; }
+    .statement { border-left: 3px solid var(--accent); padding: 0.4rem 0 0.4rem 1.5rem; max-width: 600px; font-family: 'Lora', serif; font-style: italic; font-size: 1.05rem; line-height: 1.8; }
+    h2 { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    h2::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+    .role-block { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 1rem; margin-bottom: 2.5rem; }
+    .role-block:last-of-type { margin-bottom: 0; }
+    .role-block h3 { font-family: 'Lora', serif; font-size: 1rem; font-weight: 600; }
+    .role-block .org { color: var(--accent); font-size: 0.88rem; grid-column: 1; }
+    .role-block .period { color: var(--muted); font-size: 0.875rem; text-align: right; white-space: nowrap; grid-row: 1; }
+    .role-desc { grid-column: 1 / -1; font-size: 0.95rem; line-height: 1.65; margin-top: 0.4rem; }
+    .role-desc ul { list-style: none; margin-top: 0.5rem; }
+    .role-desc ul li { padding: 0.2rem 0 0.2rem 1.1rem; position: relative; font-size: 0.92rem; }
+    .role-desc ul li::before { content: '–'; position: absolute; left: 0; color: var(--accent); }
+    .role-desc a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-pale); }
+    .role-desc a:hover { border-color: var(--accent); }
+    .pub { padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+    .pub:last-of-type { border-bottom: none; }
+    .pub-journal { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.25rem; }
+    .pub-title { font-family: 'Lora', serif; font-size: 0.975rem; margin-bottom: 0.2rem; }
+    .pub-title a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s, color 0.2s; }
+    .pub-title a:hover { color: var(--accent); border-color: var(--accent); }
+    .pub-authors { font-size: 0.85rem; color: var(--muted); }
+    .pub-note { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-top: 1.25rem; }
+    .pub-note a { color: var(--accent); text-decoration: none; }
+    .section-sub { font-family: 'Lora', serif; font-size: 1rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--muted); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem; }
+    .skill-cat h3 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 600; margin-bottom: 0.6rem; }
+    .skill-cat ul { list-style: none; font-size: 0.9rem; line-height: 1.9; }
+    .role-row { display: flex; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--rule); align-items: flex-start; }
+    .role-row:last-child { border-bottom: none; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 0.58rem; }
+    .role-row-content strong { display: block; font-size: 0.95rem; font-weight: 500; }
+    .role-row-content span { font-size: 0.875rem; color: var(--muted); display: block; line-height: 1.5; }
+    .role-row-content a { color: var(--accent); text-decoration: none; font-size: 0.875rem; }
+    .grant { padding: 0.85rem 0; border-bottom: 1px solid var(--rule); }
+    .grant:last-child { border-bottom: none; }
+    .grant-name { font-size: 0.95rem; font-weight: 500; }
+    .grant-detail { font-size: 0.875rem; color: var(--muted); margin-top: 0.1rem; }
+    .talk { padding: 0.75rem 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr auto; gap: 0.1rem 1rem; font-size: 0.92rem; }
+    .talk:last-child { border-bottom: none; }
+    .talk-name { font-weight: 500; }
+    .talk-name a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s, color 0.2s; }
+    .talk-name a:hover { color: var(--accent); border-color: var(--accent); }
+    .talk-detail { font-size: 0.85rem; color: var(--muted); grid-column: 1; }
+    .talk-year { color: var(--muted); font-size: 0.875rem; grid-row: 1; text-align: right; white-space: nowrap; }
+    .course { padding: 0.75rem 0; border-bottom: 1px solid var(--rule); }
+    .course:last-child { border-bottom: none; }
+    .course-name { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.1rem; }
+    .course-detail { font-size: 0.85rem; color: var(--muted); }
+    .running-card { background: var(--surface); border-radius: 3px; padding: 1.75rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; }
+    .running-card p { font-size: 0.95rem; line-height: 1.7; max-width: 500px; }
+    .running-link { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-size: 0.875rem; font-weight: 600; padding: 0.6rem 1.3rem; border-radius: 2px; white-space: nowrap; transition: opacity 0.2s; flex-shrink: 0; }
+    .running-link:hover { opacity: 0.82; }
+    footer { max-width: var(--max-w); margin: 0 auto; padding: 2rem; text-align: center; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--rule); }
+    footer a { color: var(--accent); text-decoration: none; }
+    @media (max-width: 600px) {
+      nav { padding: 0.75rem 1rem; } .nav-links { gap: 1rem; } main { padding: 0 1rem; }
+      .hero { padding: 3rem 0 2rem; } .running-card { flex-direction: column; align-items: flex-start; }
+      .role-block { grid-template-columns: 1fr; } .role-block .period { text-align: left; grid-row: auto; }
+      .skills-grid { grid-template-columns: 1fr 1fr; } .talk { grid-template-columns: 1fr; } .talk-year { text-align: left; grid-row: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">Dr Virginia Silió</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#running">Running</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="credentials">
+      <span class="badge">CSci</span>
+      <span class="badge">MRSB</span>
+    </div>
+    <h1>Dr Virginia Silió</h1>
+    <p class="title-line">Research Technical Specialist &nbsp;·&nbsp; UCL Imaging Facility, CCMD &nbsp;·&nbsp; London</p>
+    <blockquote class="statement">
+      Research Technical Specialist and imaging scientist with a PhD in molecular and cell biology and over a decade of experience in core facility management, researcher training, and image analysis. I moved into research infrastructure, building the tools, expertise, and communities that make good science possible.
+    </blockquote>
+  </section>
+
+  <!-- ── Experience ── -->
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="role-block">
+      <h3>Research Technical Specialist</h3>
+      <span class="period">2023 – present</span>
+      <span class="org">UCL Imaging Facility, Centre for Cell &amp; Molecular Dynamics</span>
+      <div class="role-desc"><ul>
+        <li>Train and support researchers in advanced light microscopy across multiple departments and institutions.</li>
+        <li>Deliver image analysis support including Python scripting, ImageJ/FIJI macros, and machine learning workflows.</li>
+        <li>Deliver the <a href="https://github.com/UCL-Biosciences/introduction-to-image-analysis/tree/main">UCL's introduction to image analysis course</a>.</li>
+        <li>Deliver microscopy practicals for <a href="https://www.ucl.ac.uk/module-catalogue/modules/advanced-molecular-cell-biology-CELL0016">CELL0016: Advanced Molecular Cell Biology</a>.</li>
+        <li>Develop and maintain open-source bioimage analysis tools on <a href="https://github.com/VirSicas">GitHub</a> (bioimage-ml-workflow, cellpose2coordinates — work in progress).</li>
+        <li>Contribute to grant applications, safety documentation, risk assessments, and teaching materials.</li>
+        <li>Engage in science outreach and public engagement, including school visits and community events.</li>
+      </ul></div>
+    </div>
+
+    <div class="role-block">
+      <h3>Imaging Technician</h3>
+      <span class="period">2018 – 2023</span>
+      <span class="org">Nikon Imaging Centre, King's College London</span>
+      <div class="role-desc"><ul>
+        <li>Managed daily operations of a busy multi-user microscopy facility.</li>
+        <li>Delivered advanced user training and technical support across multiple imaging modalities.</li>
+        <li>Provided guidance on experiment design, imaging workflows, and quantitative analysis.</li>
+        <li>Organised and delivered workshops, seminars, and outreach activities.</li>
+        <li>Member of the Diversity &amp; Inclusion Committee.</li>
+      </ul></div>
+    </div>
+
+    <div class="role-block">
+      <h3>Postdoctoral Research Fellow</h3>
+      <span class="period">2013 – 2018</span>
+      <span class="org">Warwick Medical School, University of Warwick</span>
+      <div class="role-desc"><ul>
+        <li>Investigated spindle assembly checkpoint mechanisms in human cells using live-cell imaging.</li>
+        <li>Developed novel protocols for cell transformation and mitotic regulation studies.</li>
+        <li>Published in peer-reviewed journals and presented at international conferences.</li>
+        <li>Supervised and taught undergraduate and postgraduate students.</li>
+      </ul></div>
+    </div>
+
+    <div class="role-block">
+      <h3>PhD, Molecular &amp; Cell Biology</h3>
+      <span class="period">2006 – 2012</span>
+      <span class="org">Centro Nacional de Biotecnología, Universidad Autónoma de Madrid</span>
+      <div class="role-desc">Studied PI3K function in mitotic regulation using imaging, molecular biology, and biochemical techniques. Published peer-reviewed papers and presented at international conferences.</div>
+    </div>
+  </section>
+
+  <!-- ── Skills ── -->
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h3>Microscopy</h3>
+        <ul>
+          <li>Widefield</li>
+          <li>Confocal</li>
+          <li>Light sheet</li>
+          <li>SIM</li>
+          <li>Airyscan / SPAD</li>
+          <li>TIRF / HILO / SMLM</li>
+          <li>Live-cell imaging</li>
+          <li>Sample preparation</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Image Analysis</h3>
+        <ul>
+          <li>Cellpose / Stardist / SAM</li>
+          <li>Ilastik</li>
+          <li>CellProfiler</li>
+          <li>Ultrack</li>
+          <li>Napari</li>
+          <li>Imaris</li>
+          <li>NIS Elements</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Coding &amp; Data</h3>
+        <ul>
+          <li>Python (incl. PyTorch / timm)</li>
+          <li>ImageJ / FIJI macros</li>
+          <li>MATLAB &amp; R</li>
+          <li>GitHub</li>
+          <li>FAIR data &amp; data stewardship</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Management &amp; Leadership</h3>
+        <ul>
+          <li>Facility management</li>
+          <li>Grant writing</li>
+          <li>User training</li>
+          <li>Risk assessment</li>
+          <li>Science communication</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Community ── -->
+  <section id="community">
+    <h2>Community &amp; External Roles</h2>
+
+    <p class="section-sub">Elected &amp; appointed</p>
+
+    <div class="role-row">
+      <div class="dot"></div>
+      <div class="role-row-content">
+        <strong>Elected Member, Academic Board</strong>
+        <span>University College London · Technical staff representative · from September 2026</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="dot"></div>
+      <div class="role-row-content">
+        <strong><a href="https://www.rms.org.uk/community/science-sections/light-microscopy.html">Deputy Chair (from Autumn 2026), Light Microscopy Committee</a></strong>
+        <span>Royal Microscopical Society · Elected, 4-year term</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="dot"></div>
+      <div class="role-row-content">
+        <strong><a href="https://www.eurobioimaging.eu/scientific-ambassadors/meet-our-scientific-ambassadors/scientific-ambassadors-2025-2026/">Scientific Ambassador</a></strong>
+        <span>Euro-BioImaging · 2025–2026</span>
+      </div>
+    </div>
+
+    <p class="section-sub">Organising &amp; community</p>
+
+    <div class="role-row">
+      <div class="dot"></div>
+      <div class="role-row-content">
+        <strong><a href="https://www.ucl.ac.uk/science-technology-platforms/imaging/london-bioimage-interest-group">Co-organiser, UCL BioImage Interest Group (BIIG)</a></strong>
+        <span>UCL imaging community</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="dot"></div>
+      <div class="role-row-content">
+        <strong><a href="https://www.rms.org.uk/rms-event-calendar/2026-events/frontiers-in-bioimaging-2026.html">Co-organiser, Frontiers in BioImaging 2026</a></strong>
+        <span>Royal Microscopical Society · Manchester, November 2026</span>
+      </div>
+    </div>
+
+    
+
+    <div class="role-row">
+      <div class="dot"></div>
+      <div class="role-row-content">
+        <strong><a href="https://www.ucl.ac.uk/science-technology-platforms/imaging/ucl-science-technology-platform-imaging-symposium-2026">Organising Committee, UCL STP Imaging Symposium 2025</a></strong>
+        <span>University College London</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="dot"></div>
+      <div class="role-row-content">
+        <strong><a href="https://beta.bioimagearchive.org/bioimage-archive/contributors">Contributor, BioImage Archive</a></strong>
+        <span>EMBL-EBI</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="dot"></div>
+      <div class="role-row-content">
+        <strong>Science outreach and public engagement</strong>
+        <span>School visits, community events, and science communication activities</span>
+      </div>
+    </div>
+
+    <h2 style="margin-top:2.5rem;">Grants &amp; Funding</h2>
+
+    <div class="grant">
+      <div class="grant-name">Crick Partnership Networking Fund</div>
+      <div class="grant-detail">Grant lead · London-BIIG: expanding the BioImage Interest Group into a London-wide imaging network (UCL, Crick, KCL, Imperial)</div>
+    </div>
+
+    <div class="grant">
+      <div class="grant-name">BBSRC Mid-Range Equipment Grant</div>
+      <div class="grant-detail">QPatch 48X automated patch clamp system · UCL</div>
+    </div>
+
+    <h2 style="margin-top:2.5rem;">Selected Presentations</h2>
+
+    <div class="talk">
+      <span class="talk-name">Techs Today — Imperial College London</span>
+      <span class="talk-year">2026</span>
+      <span class="talk-detail">Invited speaker · "Still learning at 40: building a technical specialist career"</span>
+    </div>
+
+    <div class="talk">
+      <span class="talk-name">UK Light Microscopy Facility Managers (UKLMF)</span>
+      <span class="talk-year">2025</span>
+      <span class="talk-detail">Speaker · CRIB talk</span>
+    </div>
+
+    <div class="talk">
+      <span class="talk-name"><a href="https://www.youtube.com/watch?v=aKakQ6K6HxU">Euro-BioImaging Virtual Pub</a></span>
+      <span class="talk-year">2025</span>
+      <span class="talk-detail">Invited speaker</span>
+    </div>
+
+    <div class="talk">
+      <span class="talk-name">Leica ICL Symposium</span>
+      <span class="talk-year">2024</span>
+      <span class="talk-detail">Invited speaker</span>
+    </div>
+
+    <div class="talk">
+      <span class="talk-name">Cold Spring Harbor Symposium</span>
+      <span class="talk-year">2017</span>
+      <span class="talk-detail">Poster presentation</span>
+    </div>
+
+    <div class="talk">
+      <span class="talk-name">ASCB Annual Meeting</span>
+      <span class="talk-year">2015</span>
+      <span class="talk-detail">Poster presentation</span>
+    </div>
+  </section>
+
+  <!-- ── Courses ── -->
+  <section id="courses">
+    <h2>Courses &amp; Certifications</h2>
+
+    <div class="course">
+      <div class="course-name">Chartered Scientist (CSci) — Royal Microscopical Society</div>
+    </div>
+
+    <div class="course">
+      <div class="course-name">Advanced Artificial Intelligence (CNNs, explainability, LLMs, PyTorch) — Scryptiq.ai &nbsp;<span style="color:var(--accent);font-size:0.82rem;font-weight:600;">In progress</span></div>
+      <div class="course-detail">Building on core ML — convolutional neural networks, explainable AI, and large language models applied to biological sequences</div>
+    </div>
+
+    <div class="course">
+      <div class="course-name">Learn2Discover &nbsp;<span style="color:var(--accent);font-size:0.82rem;font-weight:600;">Distinction</span> &nbsp;<span style="color:var(--muted);font-size:0.82rem;">2025</span></div>
+      <div class="course-detail">Data handling, supervised and unsupervised ML, image clustering, PCA</div>
+    </div>
+
+    <div class="course">
+      <div class="course-name">SySMIC &nbsp;<span style="color:var(--accent);font-size:0.82rem;font-weight:600;">Distinction</span> &nbsp;<span style="color:var(--muted);font-size:0.82rem;">2024</span></div>
+      <div class="course-detail">Advanced computing &amp; mathematical modelling for biosciences</div>
+    </div>
+
+    <div class="course">
+      <div class="course-name">Microscopy Data Analysis: Machine Learning and the BioImage Archive — EMBL &nbsp;<span style="color:var(--muted);font-size:0.82rem;">2025</span></div>
+    </div>
+
+    <div class="course">
+      <div class="course-name">Introduction to Image Analysis — The Francis Crick Institute &nbsp;<span style="color:var(--muted);font-size:0.82rem;">2024</span></div>
+    </div>
+
+    <div class="course">
+      <div class="course-name">Leadership &amp; Research Culture Accelerator — UCL &amp; WHEN &nbsp;<span style="color:var(--muted);font-size:0.82rem;">2024</span></div>
+    </div>
+
+    <div class="course">
+      <div class="course-name">The Herschel Programme for Women in Technical Leadership &nbsp;<span style="color:var(--muted);font-size:0.82rem;">2024</span></div>
+    </div>
+  </section>
+
+  <!-- ── Publications ── -->
+  <section id="publications">
+    <h2>Publications</h2>
+    <p style="font-size:0.875rem; color:var(--muted); margin-bottom:1.5rem;">Click titles to access. Full list also via <a href="https://orcid.org/0000-0002-3169-336X" style="color:var(--accent)">ORCID</a>.</p>
+
+  <div class="pub">
+    <div class="pub-journal">EMBO Journal · 2026</div>
+    <div class="pub-title"><a href="https://doi.org/10.1038/s44318-026-00882-1">Allosteric switching of Ca²⁺ permeability in the lysosomal ion channel TPC2 underpins biased agonist activation</a></div>
+    <div class="pub-authors">Mu Q, Saito R, Ozola F, Jaślan D, Chu PN, Zaki AM, Rubio-Alarcon M, Keller M, Yuan Y, Greig A, Silió V, Bracher F, Biggin PC, Brailoiu GC, Brailoiu E, Marchant JS, Grimm C, Lambie EJ, Rahman T, Patel S</div>
+  </div>
+
+    <div class="pub">
+      <div class="pub-journal">Journal of Microscopy · 2026</div>
+      <div class="pub-title"><a href="https://doi.org/10.1111/jmi.70089">Making the invisible visible: A global examination of careers and recognition for Imaging Scientists in core facilities</a></div>
+      <div class="pub-authors">Thompson K, Bischof J, Reis Y, Arvanitis C, Balogun OA, Brown CM, De Niz M, Díaz M, Engelbrecht L, Fabian-Morales E, Silió V et al.</div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-journal">Developmental Cell · 2015</div>
+      <div class="pub-title"><a href="https://doi.org/10.1016/j.devcel.2015.11.012">KNL1-Bubs and RZZ provide two separable pathways for checkpoint activation at human kinetochores</a></div>
+      <div class="pub-authors">Silió V, McAinsh AD, Millar JB</div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-journal">Nucleic Acids Research · 2013</div>
+      <div class="pub-title"><a href="https://doi.org/10.1093/nar/gks1095">PI3K beta controls Replication Factor C assembly and function</a></div>
+      <div class="pub-authors">Redondo J, Rodríguez MJ, Silió V, Perez-G V, Valpuesta J, Carrera AC</div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-journal">Molecular Biology of the Cell · 2012</div>
+      <div class="pub-title"><a href="https://doi.org/10.1091/mbc.e12-05-0371">Phosphoinositide 3-kinase beta regulates chromosome segregation in mitosis</a></div>
+      <div class="pub-authors">Silió V, Redondo J, Carrera AC</div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-journal">Nature Cell Biology · 2009</div>
+      <div class="pub-title"><a href="https://doi.org/10.1038/ncb1921">SADB phosphorylation of gamma-tubulin regulates centrosome duplication</a></div>
+      <div class="pub-authors">Alvarado-Kristensson M, Rodríguez MJ, Silió V, Valpuesta JM, Carrera AC</div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-journal">Biochemical Society Transactions · 2007</div>
+      <div class="pub-title"><a href="https://doi.org/10.1042/BST0350222">A cascade involving p85, Cdc42 and septin 2 regulates cytokinesis</a></div>
+      <div class="pub-authors">Silió V, Marqués M, Cortés I, Zuluaga S, Carrera AC</div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-journal">EMBO Journal · 2006</div>
+      <div class="pub-title"><a href="https://doi.org/10.1038/ncb1921">A PI3K activity-independent function of p85 regulatory subunit in control of mammalian cytokinesis</a></div>
+      <div class="pub-authors">García Z, Silió V, Marqués M, Cortés I, Kumar A, Hernandez C, Checa AI, Serrano A, Carrera AC</div>
+    </div>
+
+    <p class="section-sub">Preprint</p>
+
+    <div class="pub">
+      <div class="pub-journal">bioRxiv · 2018</div>
+      <div class="pub-title"><a href="https://doi.org/10.1016/j.devcel.2015.11.012">Cell transformation disrupts the efficiency of chromosome segregation through microtubule detyrosination</a></div>
+      <div class="pub-authors">Silió V, Millar JB, McAinsh AD</div>
+    </div>
+
+  
+  </section>
+
+  <!-- ── Running ── -->
+  <section id="running">
+    <h2>Running</h2>
+    <div class="running-card">
+      <p>Eight marathon finishes (PB 3:07), multiple 50k+ ultras — Country to Capital 70k, Epping Forest 50k, Beyond Trails 55k, and others. I write honest race reports from a female perspective at Ultra notes.</p>
+      <a href="https://virsicas.github.io/ultra-notes" class="running-link">Ultra notes →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Virginia Silió &nbsp;·&nbsp; UCL Imaging Facility, London &nbsp;·&nbsp;
+  <a href="mailto:v.silio@ucl.ac.uk">v.silio@ucl.ac.uk</a> &nbsp;·&nbsp;
+  <a href="https://github.com/VirSicas">GitHub</a>
+</footer>
+
+</body>
+</html>
